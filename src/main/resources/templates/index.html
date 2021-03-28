@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>techSource</title>
+</head>
+<body>
+<div align="center">
+    <h1>Products list</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>In stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProduct}">
+                <td th:text="${product.brand}"></td>
+                <td th:text="${product.model}"></td>
+                <td th:text="${product.description}"></td>
+                <td>
+                <img th: src="@{product.image}">
+                </td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.category}"></td>
+                <td th:text="${product.inStock}"></td>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
