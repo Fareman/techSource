@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>techSource</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Product management system</h1>
+    <hr>
+    <h2>Update product</h2>
+
+    <form action="#" th:action="@{/saveProduct}" th:object="${product}" method="Post">
+        <input type="text" th:field = "*{brand}" placeholder="Brand from list" class="form-control mb-4 col-4">
+
+        <input type="text" th:field = "*{model}" placeholder="Model" class="form-control mb-4 col-4">
+
+        <input type="text" th:field = "*{description}" placeholder="Description" class="form-control mb-4 col-4">
+
+        <input type="text" th:field = "*{image}" placeholder="Image source" class="form-control mb-4 col-4">
+
+        <input type="text" th:field = "*{price}" placeholder="Price ($)" class="form-control mb-4 col-4">
+
+        <input type="text" th:field = "*{category}" placeholder="Category from list" class="form-control mb-4 col-4">
+
+        <input type="text" th:field = "*{inStock}" placeholder="In stock" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2">Update</button>
+    </form>
+</div>
+</body>
+</html>
