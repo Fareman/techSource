@@ -15,8 +15,8 @@ public class Product {
     @Type(type = "text")
     private String description;
 
-    @Column(nullable = false)
-    private String image;
+    @Column
+    private Byte[] image;
 
     @Column(nullable = false)
     private int inStock;
@@ -53,11 +53,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getImage() {
+    public Byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Byte[] image) {
         this.image = image;
     }
 

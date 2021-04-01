@@ -1,29 +1,30 @@
 package ru.shop.techSource.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
-@Entity(name = "role")
+@Entity(name = "roles")
 
 public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_Role;
 
-    @Column(nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "login", nullable = false)
-    private User user;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     public Role(){}
 
-    public long getId_Role() {
-        return id_Role;
+    public Long getId() {
+        return id;
     }
 
-    public void setId_Role(long id_Category) {
-        this.id_Role = id_Category;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,5 +33,22 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", users=" + users +
+                '}';
     }
 }

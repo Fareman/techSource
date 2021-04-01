@@ -2,7 +2,6 @@ package ru.shop.techSource.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity(name = "category")

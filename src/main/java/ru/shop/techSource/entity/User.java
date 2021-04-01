@@ -1,43 +1,43 @@
 package ru.shop.techSource.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity(name = "user")
 
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long login;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
-    @Column(nullable = false)
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
     private String password;
 
-    @Column(nullable = false)
-    private String surname;
+    @Transient
+    private String confirmPassword;
 
-    @Column(nullable = false)
-    private String name;
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+                inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
-    @Column(nullable = false)
-    private String patronymic;
-
-    @Column(nullable = false)
-    private Date birthDate;
-
-    public User(){}
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Role> Roles = new ArrayList<>();
-
-    public long getLogin() {
-        return login;
+    public long getId() {
+        return id;
     }
 
-    public void setLogin(long login) {
-        this.login = login;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -48,35 +48,19 @@ public class User {
         this.password = password;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
-    public String getName() {
-        return name;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

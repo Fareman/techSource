@@ -41,7 +41,7 @@ public class ProductController {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         return "update_product";
-    };
+    }
 
     @GetMapping("/deleteProduct{id}")
     public String deleteProduct(@PathVariable (value = "id") long id){
